@@ -4,7 +4,8 @@ import json
 
 app = Flask(__name__)
 api = Api(app)
-data = json.load(open("api\data.json"))
+data = json.load(open("api/data.json"))
+print(data[-1]["gameId"])
 
 gameReqParser = reqparse.RequestParser()
 gameReqParser.add_argument(
@@ -27,6 +28,13 @@ class Games(Resource):
     def get(self):
         return data
 
+    def post(self):
+        args = gameReqParser.parse_args()
+        args["gameId"] = int(data[-1]["gameId"]) + 1
+        data.append(args)
+        json.dump(data, open(r"api/data.json", "w"), indent=2)
+        return args, 200
+
 
 class GamesId(Resource):
     def get(self, gameId):
@@ -34,18 +42,6 @@ class GamesId(Resource):
             if game["gameId"] == gameId:
                 return game
         return "gameId not valid...", 400
-
-    def post(self, gameId):
-        args = gameReqParser.parse_args()
-        for game in data:
-            if game["gameId"] == gameId:
-                return "gameId already exits...", 400
-        args["gameId"] = gameId
-        data.append(args)
-        json.dump(
-            data, open(r"C:\Users\Divyesh\Desktop\DCB\api\data.json", "w"), indent=2
-        )
-        return args, 200
 
     def put(self, gameId):
         args = gameReqParser.parse_args()
@@ -55,10 +51,8 @@ class GamesId(Resource):
                 args["playerOne"] = game["playerOne"]
                 args["playerTwo"] = game["playerTwo"]
                 data[i] = args
+                json.dump(data, open(r"api/data.json", "w"), indent=2)
                 return args, 200
-        json.dump(
-            data, open(r"C:\Users\Divyesh\Desktop\DCB\api\data.json", "w"), indent=2
-        )
         return "game ID dose not exits", 400
 
 

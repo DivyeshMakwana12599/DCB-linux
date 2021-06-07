@@ -2,13 +2,19 @@
   {
     "playerOne": "Hello",
     "playerTwo": "Moto",
-    "currentPosition": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKN",
-    "gameId": "456"
+    "currentPosition": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+    "gameId": "1"
   },
   {
     "playerOne": "pritesh harsora",
     "playerTwo": "divyesh makwana",
     "currentPosition": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-    "gameId": "457"
+    "gameId": "2"
+  },
+  {
+    "playerOne": "mann",
+    "playerTwo": "yash",
+    "currentPosition": "r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR",
+    "gameId": "3"
   }
 ]
